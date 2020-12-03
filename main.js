@@ -2,25 +2,27 @@
 // It is referenced from the "scripts" section of the package.json file,
 // so that it can be started by running "npm start".
 
-const Apify = require('apify');
+const Apify = require("apify");
+const { getBaseUrl } = require("./common");
 
 Apify.main(async () => {
-    // Get input of the actor.
-    // If you'd like to have your input checked and generate a user interface
-    // for it, add INPUT_SCHEMA.json file to your actor.
-    // For more information, see https://apify.com/docs/actor/input-schema
-    const input = await Apify.getInput();
-    console.log('Input:');
-    console.dir(input);
+  // Get input of the actor.
+  // If you'd like to have your input checked and generate a user interface
+  // for it, add INPUT_SCHEMA.json file to your actor.
+  // For more information, see https://apify.com/docs/actor/input-schema
+  const input = await Apify.getInput();
+  console.log("Input:");
+  console.dir(input);
 
-    // Do something useful here...
+  // Do something useful here...
 
-    // Save output
-    const output = {
-        receivedInput: input,
-        message: 'Hello sir!',
-    };
-    console.log('Output:');
-    console.dir(output);
-    await Apify.setValue('OUTPUT', output);
+  // Save output
+  const output = {
+    receivedInput: input,
+    message: getBaseUrl("conference", "__all"),
+  };
+  console.log("Output:");
+  console.dir(output);
+
+  await Apify.setValue("OUTPUT", output);
 });
