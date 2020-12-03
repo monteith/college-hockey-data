@@ -1,4 +1,4 @@
-export const conferences = [
+const conferences = [
   "__all",
   "atlantic-hockey",
   "big-ten",
@@ -14,6 +14,11 @@ const baseUrl = {
     `https://collegehockeyinc.com/conferences/${conference}/index.php`,
 };
 
-export function getBaseUrl(pageType, ...args) {
+function getBaseUrl(pageType, ...args) {
   return baseUrl[pageType](args[0]);
 }
+
+module.exports = {
+  conferences,
+  getBaseUrl,
+};
